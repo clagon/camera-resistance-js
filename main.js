@@ -85,7 +85,9 @@ const predict = canvas => {
 function sendToDiscord(blob, content) {
 	const discordHookUrl = "https://webhook-proxy-resistance.vercel.app/proxy/discord/webhook";
 	const data = {
+		username: "抵抗値判別",
 		content: content,
+		avatar_url: "https://resistance-predict.vercel.app/resistance.png",
 	};
 	const form = new FormData();
 	form.append("payload_json", JSON.stringify(data));
