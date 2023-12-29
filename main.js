@@ -5,7 +5,6 @@ let count = 0;
 async function start() {
 	const devices = (await navigator.mediaDevices.enumerateDevices()).filter(device => device.kind === "videoinput");
 	const deviceId = devices[count % devices.length].deviceId;
-	const facingMode = count % 2 == 0 ? "environment" : "user";
 	console.log(devices[count % devices.length].deviceId);
 	let constraints;
 	if (/Mobi|Android/i.test(navigator.userAgent)) {
