@@ -5,15 +5,30 @@ let count = 0;
 async function start() {
 	const devices = (await navigator.mediaDevices.enumerateDevices()).filter(device => device.kind === "videoinput");
 	const deviceId = devices[count % devices.length].deviceId;
+	const facingMode = count % 2 == 0 ? "environment" : "user";
 	console.log(devices[count % devices.length].deviceId);
-	const camera = await navigator.mediaDevices.getUserMedia({
-		video: {
-			width: 1920,
-			height: 1080,
-			deviceId: deviceId,
-		},
-		audio: false,
-	});
+	let constraints;
+	if (/Mobi|Android/i.test(navigator.userAgent)) {
+		constraints = {
+			video: {
+				// width: 1920,
+				// height: 1080,
+				facingMode: { exact: "environment" },
+			},
+			audio: false,
+		};
+	} else {
+		constraints = {
+			video: {
+				width: 1920,
+				height: 1080,
+				deviceId: { exact: deviceId },
+			},
+			audio: false,
+		};
+	}
+	const camera = await navigator.mediaDevices.getUserMedia(constraints);
+	console.log(devices);
 	const video = document.querySelector("#video");
 	const box = document.querySelector(".box");
 	video.autoplay = true;
