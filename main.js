@@ -82,32 +82,32 @@ function sendToDiscord(blob, content) {
 	});
 }
 
-document.onload = () => {
+// document.onload = () => {
+start();
+
+const takepic = document.querySelector(".takepic");
+takepic.addEventListener("click", () => {
+	const video = document.querySelector("#video");
+	const canvas = document.createElement("canvas");
+	captureImg(video, canvas);
+	const prediction = predict(canvas);
+	console.log(prediction);
+	const maxIndex = prediction.indexOf(Math.max(...prediction));
+	console.log(classes[maxIndex], maxIndex);
+	const message = `class: ${classes[maxIndex]} (${prediction[maxIndex] * 100}%)`;
+	canvas.toBlob(blob => {
+		sendToDiscord(blob, message);
+	});
+	// postImg(img);
+	// about:blankに画像を表示
+	// const URL = toBlob(img);
+	// console.log(URL);
+	// window.open(URL, "_blank");
+});
+
+const rotate = document.querySelector(".rotate");
+rotate.addEventListener("click", () => {
+	count++;
 	start();
-
-	const takepic = document.querySelector(".takepic");
-	takepic.addEventListener("click", () => {
-		const video = document.querySelector("#video");
-		const canvas = document.createElement("canvas");
-		captureImg(video, canvas);
-		const prediction = predict(canvas);
-		console.log(prediction);
-		const maxIndex = prediction.indexOf(Math.max(...prediction));
-		console.log(classes[maxIndex], maxIndex);
-		const message = `class: ${classes[maxIndex]} (${prediction[maxIndex] * 100}%)`;
-		canvas.toBlob(blob => {
-			sendToDiscord(blob, message);
-		});
-		// postImg(img);
-		// about:blankに画像を表示
-		// const URL = toBlob(img);
-		// console.log(URL);
-		// window.open(URL, "_blank");
-	});
-
-	const rotate = document.querySelector(".rotate");
-	rotate.addEventListener("click", () => {
-		count++;
-		start();
-	});
-};
+});
+// };
