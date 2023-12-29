@@ -155,4 +155,8 @@ body {
 		width: 120px;
 		height: 100%;
 	}
+	.rotate {
+		top: unset;
+		right: 0;
+	}
 }
