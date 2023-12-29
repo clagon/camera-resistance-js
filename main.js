@@ -10,8 +10,8 @@ async function start() {
 	if (/Mobi|Android/i.test(navigator.userAgent)) {
 		constraints = {
 			video: {
-				// width: 1920,
-				// height: 1080,
+				width: 1920,
+				height: 1080,
 				facingMode: { exact: "environment" },
 			},
 			audio: false,
