@@ -69,7 +69,7 @@ const predict = canvas => {
 };
 
 function sendToDiscord(blob, content) {
-	const discordHookUrl = process.env.HOOK_URL;
+	const discordHookUrl = "https://webhook-proxy-resistance.vercel.app/proxy/discord/webhook";
 	const data = {
 		content: content,
 	};
