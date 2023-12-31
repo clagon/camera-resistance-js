@@ -111,9 +111,13 @@ takepic.addEventListener("click", () => {
 	const maxIndex = prediction.indexOf(Math.max(...prediction));
 	console.log(classes[maxIndex], maxIndex);
 	const message = `class: ${classes[maxIndex]} (${prediction[maxIndex] * 100}%)`;
-	canvas.toBlob(blob => {
-		sendToDiscord(blob, message);
-	});
+	canvas.toBlob(
+		blob => {
+			sendToDiscord(blob, message);
+		},
+		"image/jpeg",
+		0.95
+	);
 	// postImg(img);
 	// about:blankに画像を表示
 	// const URL = toBlob(img);
