@@ -113,11 +113,9 @@ takepic.addEventListener("click", () => {
 	const maxIndex = prediction.indexOf(Math.max(...prediction));
 	console.log(classes[maxIndex], maxIndex);
 	const resistanceData = classes[maxIndex];
-	const message = `
-	class: ${resistanceData.name} (${prediction[maxIndex] * 100}%)
-	金属被膜抵抗: ${resistanceData.codes.kinpi}
-	炭素被膜抵抗: ${resistanceData.codes.tanso}
-	`;
+	let message = `class: ${resistanceData.name} (${prediction[maxIndex] * 100}%)`;
+	message += `\n金属被膜抵抗: ${resistanceData.codes.kinpi}`;
+	message += `\n炭素被膜抵抗: ${resistanceData.codes.tanso}`;
 	canvas.toBlob(
 		blob => {
 			sendToDiscord(blob, message);
