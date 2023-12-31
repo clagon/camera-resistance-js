@@ -84,6 +84,8 @@ body {
 	aspect-ratio: 16/9;
 	background-color: aquamarine;
 	box-shadow: 10px 10px 11px 0px rgba(0, 0, 0, 0.1), -10px -10px 11px 0px rgba(0, 0, 0, 0.1);
+}
+body.pc .video_container > video {
 	transform: rotateY(180deg);
 }
 .button_container {

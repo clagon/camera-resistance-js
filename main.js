@@ -17,6 +17,7 @@ async function start() {
 			audio: false,
 		};
 	} else {
+		document.body.classList.add("pc");
 		constraints = {
 			video: {
 				width: 1920,
