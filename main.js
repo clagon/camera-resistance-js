@@ -1,5 +1,6 @@
 import * as tf from "@tensorflow/tfjs";
-import { classes } from "./classes.json";
+// import { classes } from "./classes.json";
+import { classes } from "./classesWithCodes.json";
 const model = await tf.loadGraphModel("https://static-model.vercel.app/model.json");
 let count = 0;
 async function start() {
@@ -111,7 +112,12 @@ takepic.addEventListener("click", () => {
 	console.log(prediction);
 	const maxIndex = prediction.indexOf(Math.max(...prediction));
 	console.log(classes[maxIndex], maxIndex);
-	const message = `class: ${classes[maxIndex]} (${prediction[maxIndex] * 100}%)`;
+	const resistanceData = classes[maxIndex];
+	const message = `
+	class: ${resistanceData.name} (${prediction[maxIndex] * 100}%)
+	金属被膜抵抗: ${resistanceData.codes.kinpi}
+	炭素被膜抵抗: ${resistanceData.codes.tanso}
+	`;
 	canvas.toBlob(
 		blob => {
 			sendToDiscord(blob, message);
