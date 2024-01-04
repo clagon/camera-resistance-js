@@ -100,7 +100,8 @@ body.pc .video_container > video {
 	position: absolute;
 	margin: 20px;
 	padding: 10px;
-	top: unset;
+	top: 0;
+	bottom: 0;
 	right: 0;
 	/* width: 100%;
 	height: 100%; */
@@ -160,7 +161,7 @@ body.pc .video_container > video {
 		height: 100%;
 	}
 	.rotate {
-		top: 0;
-		left: unset;
+		bottom: unset;
+		left: 0;
 	}
 }
